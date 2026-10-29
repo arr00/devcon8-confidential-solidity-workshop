@@ -1,0 +1,31 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["dependencies"]
+solc = "0.8.27"
+evm_version = "prague"
+optimizer = true
+optimizer_runs = 200
+# Every top-level call in a test is its own transaction, so transient ACL grants end with it.
+isolate = true
+# Print console.log output, such as what Mallory decrypted.
+verbosity = 2
+
+[lint]
+# The unused-return lint would point at attack 1 before the attacks start. Run `forge lint` afterwards.
+lint_on_build = false
+
+[dependencies]
+forge-std = "1.17.0"
+"@openzeppelin-contracts" = "5.7.0"
+"@openzeppelin-confidential-contracts" = { version = "0.5.3", git = "https://github.com/OpenZeppelin/openzeppelin-confidential-contracts.git", tag = "v0.5.3" }
+"@fhevm-solidity" = "0.11.1"
+"@encrypted-types" = "0.0.4"
+forge-fhevm = { version = "3ee696f", git = "https://github.com/zama-ai/forge-fhevm.git", rev = "3ee696fba62a32314fde457de28cc29f1191c4cb" }
+"@openzeppelin-contracts-upgradeable" = "5.7.0"
+
+[soldeer]
+remappings_generate = false
+recursive_deps = false
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

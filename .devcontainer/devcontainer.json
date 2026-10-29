@@ -1,0 +1,17 @@
+{
+  "name": "Encrypted, Not Anonymous",
+  "image": "mcr.microsoft.com/devcontainers/base:bookworm",
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/home/vscode/.foundry/bin"
+  },
+  "onCreateCommand": "(command -v make >/dev/null || (sudo apt-get update && sudo apt-get install -y --no-install-recommends make)) && curl -sSfL https://foundry.paradigm.xyz | bash && /home/vscode/.foundry/bin/foundryup --install v1.8.6",
+  "updateContentCommand": "/home/vscode/.foundry/bin/forge soldeer install && /home/vscode/.foundry/bin/forge build",
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["src/ConfidentialVault.sol"]
+    },
+    "vscode": {
+      "extensions": ["NomicFoundation.hardhat-solidity"]
+    }
+  }
+}
